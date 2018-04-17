@@ -68,10 +68,11 @@ class Settings extends ComponentEx<IProps, IComponentState> {
             </InputGroup>
             <ControlLabel>
               <Alert bsStyle='info'>
-                {t(`When you create a language here it will be created in ${langPath}. `
+                {t(`When you create a language here it will be created in {{ langPath }}. `
                   + 'As long as the language is active, missing translations will be added to the '
                   + 'translation files automatically as you come across them inside Vortex. '
-                  + 'When you edit those files, changes will become visible immediately.')}
+                  + 'When you edit those files, changes will become visible immediately.',
+                  { replace: { langPath } })}
               </Alert>
             </ControlLabel>
           </FormGroup>
@@ -126,6 +127,6 @@ function mapDispatchToProps(dispatch: Redux.Dispatch<any>): IActionProps {
 }
 
 
-export default translate(['common'], { wait: false })(
+export default translate(['translate'], { wait: false })(
   connect(mapStateToProps, mapDispatchToProps)(
     Settings));
