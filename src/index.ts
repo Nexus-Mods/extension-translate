@@ -59,7 +59,7 @@ class MissingKeysDB {
 }
 
 function init(context: types.IExtensionContext): boolean {
-  context.requireVersion('^0.14.1');
+  context.requireVersion('>=0.14.1');
   const userLanguagesPath = path.join(app.getPath('userData'), 'locales');
   context.registerSettings('Interface', Settings, () => ({
     getKnownLanguages: () => fs.readdirAsync(userLanguagesPath).catch(err => []),
