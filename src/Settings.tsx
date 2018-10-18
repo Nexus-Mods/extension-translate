@@ -31,8 +31,12 @@ interface IComponentState {
 type IProps = ISettingsProps & IConnectedProps & IActionProps;
 
 class Settings extends ComponentEx<IProps, IComponentState> {
+  private mLocalesPath: string;
   constructor(props: IProps) {
     super(props);
+
+    this.mLocalesPath = path.join(remote.app.getPath('userData'), 'locales');
+
     this.initState({
       currentLanguage: 'en',
       knownLanguages: [],
@@ -47,7 +51,8 @@ class Settings extends ComponentEx<IProps, IComponentState> {
     const { t } = this.props;
     const { currentLanguage } = this.state;
 
-    const langPath = path.join(remote.app.getPath('userData'), 'locales');
+    const languages = codes();
+    languages.sort((lhs, rhs) => nativeLanguageName(lhs).localeCompare(nativeLanguageName(rhs)));
 
     return (
       <div style={{ position: 'relative' }}>
@@ -60,7 +65,7 @@ class Settings extends ComponentEx<IProps, IComponentState> {
                 onChange={this.selectLanguage}
                 value={currentLanguage}
               >
-                {codes().map(this.renderCode)}
+                {languages.map(this.renderCode)}
               </FormControl>
               <InputGroup.Button>
                 <Button bsStyle='primary' onClick={this.onCreateLanguage} >{t('Create')}</Button>
@@ -72,7 +77,7 @@ class Settings extends ComponentEx<IProps, IComponentState> {
                   + 'As long as the language is active, missing translations will be added to the '
                   + 'translation files automatically as you come across them inside Vortex. '
                   + 'When you edit those files, changes will become visible immediately.',
-                  { replace: { langPath } })}
+                  { replace: { langPath: this.mLocalesPath } })}
               </Alert>
             </ControlLabel>
           </FormGroup>
