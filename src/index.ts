@@ -91,6 +91,7 @@ function init(context: types.IExtensionContext): boolean {
       }
     };
     const missingHandler = (lngs, namespace, key, res) => db.onMissingKey(lngs, namespace, key, res);
+    i18n.options.saveMissing = true;
     i18n.on('languageChanged', languageChanged);
     const state: types.IState = context.api.store.getState();
     languageChanged(state.settings.interface.language);

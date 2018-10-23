@@ -1,7 +1,7 @@
 {
   "name": "translate",
   "description": "Provides translation functionality",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./out/index.js",
   "license": "GPL-3.0",
   "scripts": {
