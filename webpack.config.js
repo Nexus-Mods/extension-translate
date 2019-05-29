@@ -1,3 +1,3 @@
-let webpack = require('vortex-api/lib/util/webpack').default;
+let webpack = require('vortex-api/bin/webpack').default;
 
-module.exports = webpack('translate', __dirname);
+module.exports = webpack('translate', __dirname, 4);

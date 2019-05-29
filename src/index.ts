@@ -3,7 +3,7 @@ import Settings from './Settings';
 import * as Promise from 'bluebird';
 import { app as appIn, remote } from 'electron';
 import * as path from 'path';
-import * as i18next from 'i18next';
+import i18next from 'i18next';
 import { fs, log, types, util } from 'vortex-api';
 
 const app = remote !== undefined ? remote.app : appIn;

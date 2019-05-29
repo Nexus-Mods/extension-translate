@@ -5,7 +5,7 @@ import { remote } from 'electron';
 import * as path from 'path';
 import * as React from 'react';
 import { Alert, Button, ControlLabel, FormControl, FormGroup, InputGroup } from 'react-bootstrap';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import * as Redux from 'redux';
 import { actions, ComponentEx } from 'vortex-api';
@@ -132,6 +132,6 @@ function mapDispatchToProps(dispatch: Redux.Dispatch<any>): IActionProps {
 }
 
 
-export default translate(['translate'], { wait: false })(
+export default withTranslation(['translate'])(
   connect(mapStateToProps, mapDispatchToProps)(
-    Settings));
+    Settings) as any);
