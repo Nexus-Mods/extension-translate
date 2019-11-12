@@ -1,11 +1,13 @@
 {
   "name": "translate",
   "description": "Provides translation functionality",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./out/index.js",
   "license": "GPL-3.0",
+  "author": "Black Tree Gaming Ltd.",
   "scripts": {
     "webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js --display-error-details --progress --profile --color",
+    "bundle7z": "del translate.7z && 7z a -t7z translate.7z .\\dist\\index.js .\\dist\\info.json",
     "build": "npm run webpack && extractInfo"
   },
   "devDependencies": {
@@ -16,6 +18,7 @@
     "@types/react-i18next": "^8.1.0",
     "@types/react-redux": "4.4.35",
     "@types/redux": "3.6.0",
+    "7z-bin": "Nexus-Mods/7z-bin",
     "bluebird": "^3.5.1",
     "electron": "4.1.4",
     "i18next": "^15.1.3",
