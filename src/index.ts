@@ -65,7 +65,7 @@ function init(context: types.IExtensionContext): boolean {
     getKnownLanguages: () => fs.readdirAsync(userLanguagesPath).catch(err => []),
     onCreateLanguage: (lang: string) =>
       fs.ensureDirAsync(path.join(userLanguagesPath, lang))
-        .then(fs.writeFileAsync(path.join(userLanguagesPath, lang, 'common.json'), '{}'))
+        .then(() => fs.writeFileAsync(path.join(userLanguagesPath, lang, 'common.json'), '{}'))
         .catch(err => {
           context.api.showErrorNotification('Failed to create translation directory', err, { allowReport: false });
         }),

@@ -1,7 +1,7 @@
 {
   "name": "translate",
   "description": "Provides translation functionality",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "./out/index.js",
   "license": "GPL-3.0",
   "author": "Black Tree Gaming Ltd.",
