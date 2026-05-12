@@ -1,25 +1,26 @@
 {
   "name": "translate",
   "description": "Provides translation functionality",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "main": "./out/index.js",
   "license": "GPL-3.0",
   "author": "Black Tree Gaming Ltd.",
   "scripts": {
-    "webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js --display-error-details --progress --profile --color",
+    "webpack": "cross-env NODE_OPTIONS=--openssl-legacy-provider node ./node_modules/webpack/bin/webpack --config webpack.config.js --display-error-details --progress --profile --color",
     "bundle7z": "del translate.7z && 7z a -t7z translate.7z .\\dist\\index.js .\\dist\\info.json",
     "build": "npm run webpack && extractInfo"
   },
   "devDependencies": {
     "7z-bin": "Nexus-Mods/7z-bin",
     "@types/i18next": "^8.4.3",
-    "@types/node": "^12.0.3",
+    "@types/node": "~12.7.0",
     "@types/react": "16.0.34",
     "@types/react-bootstrap": "^0.32.6",
     "@types/react-i18next": "^8.1.0",
     "@types/react-redux": "4.4.35",
     "@types/redux": "3.6.0",
     "bluebird": "^3.5.1",
+    "cross-env": "^7.0.3",
     "electron": "18.3.7",
     "i18next": "^15.1.3",
     "react-bootstrap": "^0.32.1",
@@ -28,7 +29,7 @@
     "redux": "3.7.2",
     "ts-loader": "^6.0.1",
     "typescript": "^2.8.1",
-    "vortex-api": "Nexus-Mods/vortex-api",
+    "vortex-api": "Nexus-Mods/vortex-api#v1.16.4",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },

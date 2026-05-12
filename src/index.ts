@@ -1,12 +1,9 @@
 import Settings from './Settings';
 
 import * as Promise from 'bluebird';
-import { app as appIn, remote } from 'electron';
 import * as path from 'path';
 import i18next from 'i18next';
 import { fs, log, types, util } from 'vortex-api';
-
-const app = remote !== undefined ? remote.app : appIn;
 
 class MissingKeysDB {
   private mLanguage: string;
@@ -60,7 +57,7 @@ class MissingKeysDB {
 
 function init(context: types.IExtensionContext): boolean {
   context.requireVersion('>=0.14.1');
-  const userLanguagesPath = path.join(app.getPath('userData'), 'locales');
+  const userLanguagesPath = path.join(util.getVortexPath('userData'), 'locales');
   context.registerSettings('Interface', Settings, () => ({
     getKnownLanguages: () => fs.readdirAsync(userLanguagesPath).catch(err => []),
     onCreateLanguage: (lang: string) =>
